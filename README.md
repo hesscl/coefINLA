@@ -1,8 +1,7 @@
 # coefINLA
 ggplot for INLA Fixed Effect Coefficients
 
-### This R package is very early in development, but is intended to provide high-level graphics functions for converting `INLA`
- model output into aesthetically-pleasing `ggplot2`-based visualizations.
+### This R package is very early in development, but is intended to provide high-level graphics functions for converting `INLA` model output into aesthetically-pleasing `ggplot2`-based visualizations.
  
  `coefINLA()` is currently the only function in this library, and accepts a `INLA` model as it's main argument (`mod.inla` is `NULL` by default). 
   - You can also pass a character string corresponding to a RColorBrewer palette (e.g. "Reds", "Blues") if purple isn't your thing (Go Dawgs).
