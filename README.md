@@ -7,6 +7,7 @@ You can get it using:
 ```r
 devtools::install_github("hesscl/coefINLA")
 ```
+ <br>
  
  `coefINLA()` is currently the only function in this library, and accepts a `INLA` model as it's main argument (`mod.inla` is `NULL` by default). 
   - You can also pass a character string corresponding to a RColorBrewer palette (e.g. "Reds", "Blues") if purple isn't your thing (Go Dawgs).
