@@ -2,7 +2,7 @@ Package: coefINLA
 Title: Create ggplot for INLA fixed effects coefficients
 Version: v.01
 Authors@R: c(
-    person("Chris", "Hess", role = "aut"),
+    person("Chris", "Hess", role = "aut")
     )
 Description: Collection of package development tools.
 License: GPL (>= 2)
@@ -10,6 +10,6 @@ URL: https://github.com/hesscl/coefINLA
 Depends: 
     R (>= 3.2.1)
 Imports: 
-    ggplot2
+    ggplot2,
 	RColorBrewer
 Encoding: UTF-8
