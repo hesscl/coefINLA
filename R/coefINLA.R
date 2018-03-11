@@ -1,4 +1,4 @@
-coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE){
+coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE, labeller=NULL){
   require(ggplot2)
   require(RColorBrewer)
 
@@ -32,22 +32,45 @@ coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE){
 
   }
 
-  gg <- ggplot(coef_df, aes(x = x, y = y, group = var)) +
-    facet_grid(var ~ . , scales = "free_y") +
-    geom_vline(xintercept = 0, color = "grey70") +
-    geom_line(stat = "identity", color = "grey20") +
-    scale_y_continuous(labels = NULL, minor_breaks = NULL) +
-    geom_ribbon(data = subset(coef_df, x > lower & x < upper),
-                aes(ymax = y, ymin = 0, x = x),
-                fill = pal[7], colour = NA, alpha = 0.5)  +
-    geom_segment(data = coef_df, aes(xend = med, x = med, yend = 0), color = pal[7], lwd = .75) +
-    theme_minimal() +
-    theme(axis.title.y = element_blank(),
-          axis.text.y = element_blank(),
-          axis.ticks.y = element_blank(),
-          plot.background = element_blank(),
-          panel.grid = element_blank()) +
-    xlab("") +
-    ylab("")
-  return(gg)
+  if(is.null(labeller)){
+    gg <- ggplot(coef_df, aes(x = x, y = y, group = var)) +
+      facet_grid(var ~ . , scales = "free_y") +
+      geom_vline(xintercept = 0, color = "grey70") +
+      geom_line(stat = "identity", color = "grey20") +
+      scale_y_continuous(labels = NULL, minor_breaks = NULL) +
+      geom_ribbon(data = subset(coef_df, x > lower & x < upper),
+                  aes(ymax = y, ymin = 0, x = x),
+                  fill = pal[7], colour = NA, alpha = 0.5)  +
+      geom_segment(data = coef_df, aes(xend = med, x = med, yend = 0), color = pal[7], lwd = .75) +
+      theme_minimal() +
+      theme(axis.title.y = element_blank(),
+            axis.text.y = element_blank(),
+            axis.ticks.y = element_blank(),
+            plot.background = element_blank(),
+            panel.grid = element_blank()) +
+      xlab("") +
+      ylab("")
+    return(gg)
+  } else {
+    gg <- ggplot(coef_df, aes(x = x, y = y, group = var)) +
+      facet_grid(var ~ . , scales = "free_y", labeller = labeller) +
+      geom_vline(xintercept = 0, color = "grey70") +
+      geom_line(stat = "identity", color = "grey20") +
+      scale_y_continuous(labels = NULL, minor_breaks = NULL) +
+      geom_ribbon(data = subset(coef_df, x > lower & x < upper),
+                  aes(ymax = y, ymin = 0, x = x),
+                  fill = pal[7], colour = NA, alpha = 0.5)  +
+      geom_segment(data = coef_df, aes(xend = med, x = med, yend = 0), color = pal[7], lwd = .75) +
+      theme_minimal() +
+      theme(axis.title.y = element_blank(),
+            axis.text.y = element_blank(),
+            axis.ticks.y = element_blank(),
+            plot.background = element_blank(),
+            panel.grid = element_blank()) +
+      xlab("") +
+      ylab("")
+    return(gg)
+  }
+
+
 }

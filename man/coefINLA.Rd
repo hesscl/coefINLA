@@ -8,14 +8,17 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-coefINLA(mod.inla, palette="Purples", exp=FALSE)
+coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{mod.inla}{a model object produced from \code{INLA}
 %%     ~~Describe \code{x} here~~
-} \item{palette}{a named palette from RColorBrewer, e.g. "Purples", "Blues", "Greens". Defaults to "Purples"}
-} \item{exp}{exponentiate coefficients? Defaults to FALSE}
+} \item{palette}{a named palette from RColorBrewer, e.g. "Purples", "Blues", "Greens". Defaults to "Purples"
+} \item{exp}{exponentiate coefficients? Defaults to FALSE
+} \item{labeller}{specify a pre-specified labeller to change the facet labels. Defaults to NULL, using variable column names as facet labels.
+}
+ }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
