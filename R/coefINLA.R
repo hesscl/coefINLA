@@ -39,6 +39,11 @@ coefINLA <- function(mod.inla=NULL, palette="Purples"){
                 fill = pal[7], colour = NA, alpha = 0.5)  +
     geom_segment(data = coef_df, aes(xend = med, x = med, yend = 0), color = pal[7], lwd = .75) +
     theme_minimal() +
+    theme(axis.title.y = element_blank(),
+          axis.text.y = element_blank(),
+          axis.ticks.y = element_blank(),
+          plot.background = element_blank(),
+          panel.grid = element_blank()) +
     xlab("") +
     ylab("")
   return(gg)
