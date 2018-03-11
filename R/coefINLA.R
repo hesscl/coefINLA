@@ -24,7 +24,7 @@ coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE){
       med = fixed[4]
     )
 
-    if(exp = T){ #take advantage of exponentiating quantiles
+    if(exp == TRUE){ #take advantage of exponentiating quantiles
       var_df[,4:6] <- exp(var_df[,4:6])
     }
 
