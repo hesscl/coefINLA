@@ -4,8 +4,8 @@ Version: 0.01
 Authors@R: c(
     person("Chris", "Hess", ,"hesscl@uw.edu", role = c("aut", "cre"))
     )
-Description: Collection of package development tools.
-License: GPL (>= 2)
+Description: This function takes model objects from INLA and produces a ggplot for the posterior fixed effects coefficients.
+License: MIT
 URL: https://github.com/hesscl/coefINLA
 Depends: 
     R (>= 3.2.1)

@@ -1,4 +1,4 @@
-coefINLA <- function(mod.inla=NULL, palette="Purples"){
+coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE){
   require(ggplot2)
   require(RColorBrewer)
 
@@ -21,9 +21,12 @@ coefINLA <- function(mod.inla=NULL, palette="Purples"){
       var = name,
       lower = fixed[3],
       upper = fixed[5],
-      med = fixed[4],
-      mean = fixed[1]
+      med = fixed[4]
     )
+
+    if(exp = T){ #take advantage of exponentiating quantiles
+      var_df[,4:6] <- exp(var_df[,4:6])
+    }
 
     coef_df <- rbind(coef_df, var_df)
 

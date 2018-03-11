@@ -8,14 +8,14 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-coefINLA(mod.inla, palette="Purples")
+coefINLA(mod.inla, palette="Purples", exp=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{mod.inla}{a model object produced from \code{INLA}
 %%     ~~Describe \code{x} here~~
 } \item{palette}{a named palette from RColorBrewer, e.g. "Purples", "Blues", "Greens". Defaults to "Purples"}
-}
+} \item{exp}{exponentiate coefficients? Defaults to FALSE}
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
