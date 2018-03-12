@@ -16,7 +16,7 @@ devtools::install_github("hesscl/coefINLA")
   - The type of visualization this plot returns is akin to [`bayesplot::mcmc_areas()`](https://github.com/stan-dev/bayesplot#examples). 
 	- Instead of showing a colored ribbon for the middle 80%, `coefINLA()` uses the middle 95% and is based on integrated nested laplace approximation (cuz' you're using `INLA`).
   - This function returns a ggplot as its output. This means you can either use the default plot configuration OR you can still pipe additional graphics helper functions for customizing labels or other aspects of the plot. 
-	- See example syntax below, and an example default graphic [here](https://github.com/hesscl/coefINLA/blob/master/coefINLAclip.png).
+	- See example syntax below, and an example default graphic [here](https://github.com/hesscl/coefINLA/blob/master/example.pdf).
 
   
 ### Examples:

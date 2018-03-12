@@ -45,9 +45,18 @@ coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-Forthcoming
-{
-  }
+data(iris)
+
+mod1 <- Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width
+fit1 <- inla(mod1,
+             data = iris,
+             "normal")
+
+coefINLA(fit1) +
+  labs(title = "Posterior Distributions",
+       subtitle = "with 95\% interval") +
+  ggsave(filename = "./example.pdf", dpi = 300,
+                        width = 6, height = 8)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
