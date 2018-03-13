@@ -53,6 +53,7 @@ coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE, labeller=NULL)
             axis.ticks.x = element_line(color = "grey70"),
             plot.background = element_blank(),
             panel.grid = element_blank(),
+            panel.spacing = unit(0, "lines"),
             strip.text.y = element_text(angle = 0)) +
       xlab("") +
       ylab("")
