@@ -11,6 +11,8 @@ devtools::install_github("hesscl/coefINLA")
  
  `coefINLA()` is currently the only function in this library, and requires an `INLA` model as it's main argument (`mod.inla`) 
   - For exponentiated coefficients, set argument `exp = TRUE`
+  - To omit the intercept, set argument `intercept = FALSE`
+  - To exclude one or more covariates, set argument `exclude = 'varname'` or include multiple colnames with `c()`
   - For custom facet labels, save `your_labeller()` for ggplot, and utilize this with the function's `labeller` argument.
   - You can also pass a character string corresponding to a RColorBrewer palette (e.g. "Reds", "Blues") if purple isn't your thing.
   - The type of visualization this plot returns is akin to [`bayesplot::mcmc_areas()`](https://github.com/stan-dev/bayesplot#examples). 
@@ -38,6 +40,9 @@ coefINLA(mod1, "Blues")
 #add title
 coefINLA(mod1) +
   labs(title = "My fancy title")
+  
+#remove intercept  
+coefINLA(mod1, intercept = FALSE)
 
 #save plot with title to pdf
 coefINLA(mod1) + 
