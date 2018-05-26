@@ -1,6 +1,11 @@
-coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE, labeller=NULL){
-  require(ggplot2)
-  require(RColorBrewer)
+coefINLA <- function(mod.inla=NULL,
+                     palette="Purples", exp=FALSE, labeller=NULL,
+                     intercept=TRUE, exclude=FALSE){
+  library(ggplot2)
+  library(dplyr)
+  library(INLA)
+  library(RColorBrewer)
+  '%!in%' <- function(x,y)!('%in%'(x,y))
 
   pal <- brewer.pal(n = 7, name = palette)
 
@@ -13,6 +18,7 @@ coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE, labeller=NULL)
 
     name <- mod.inla$summary.fixed[i,] %>% rownames()
     fixed <- mod.inla$summary.fixed[i,] %>% as.numeric()
+
     d <- mod.inla$marginals.fixed[[i]] %>% as.data.frame()
 
     var_df <- data.frame(
@@ -25,11 +31,20 @@ coefINLA <- function(mod.inla=NULL, palette="Purples", exp=FALSE, labeller=NULL)
     )
 
     coef_df <- rbind(coef_df, var_df)
+  }
 
+  if(intercept == FALSE){
+    coef_df <- coef_df %>%
+      filter(var != "(Intercept)")
+  }
+
+  if(exclude != FALSE){
+    coef_df <- coef_df %>%
+      filter(var %!in% exclude)
   }
 
   if(exp == TRUE){ #take advantage of exponentiating quantiles
-    var_df[,4:6] <- exp(var_df[,4:6])
+    coef_df[,c(1, 4:6)] <- exp(coef_df[,c(1, 4:6)])
   }
 
   if(is.null(labeller)){

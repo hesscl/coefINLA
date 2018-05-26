@@ -8,15 +8,17 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL)
+coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL, intercept=TRUE, exclude=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{mod.inla}{a model object produced from \code{INLA}
 %%     ~~Describe \code{x} here~~
 } \item{palette}{a named palette from RColorBrewer, e.g. "Purples", "Blues", "Greens". Defaults to "Purples"
-} \item{exp}{exponentiate coefficients? Defaults to FALSE
-} \item{labeller}{specify a pre-specified labeller to change the facet labels. Defaults to NULL, using variable column names as facet labels.
+} \item{exp}{exponentiate coefficients? Defaults to \code{FALSE}
+} \item{labeller}{specify a pre-specified labeller to change the facet labels. Defaults to \code{NULL}, using variable column names as facet labels.
+} \item{intercept}{should the model intercept be included in the graphic? \code{TRUE} by default.
+} \item{exclude}{a character element or vector indicating column names of covariates to exclude from graphic.
 }
  }
 \details{

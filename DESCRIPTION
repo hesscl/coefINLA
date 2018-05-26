@@ -1,6 +1,6 @@
 Package: coefINLA
 Title: Create ggplot for INLA fixed effects coefficients
-Version: 0.01
+Version: 0.02
 Authors@R: c(
     person("Chris", "Hess", ,"hesscl@uw.edu", role = c("aut", "cre"))
     )
@@ -11,5 +11,6 @@ Depends:
     R (>= 3.2.1)
 Imports: 
     ggplot2,
+	dplyr,
 	RColorBrewer
 Encoding: UTF-8
