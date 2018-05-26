@@ -38,7 +38,7 @@ coefINLA <- function(mod.inla=NULL,
       filter(var != "(Intercept)")
   }
 
-  if(exclude != FALSE){
+  if(exclude[1] != FALSE){
     coef_df <- coef_df %>%
       filter(var %!in% exclude)
   }
