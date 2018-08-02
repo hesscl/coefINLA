@@ -19,7 +19,13 @@ coefINLA <- function(mod.inla=NULL,
     name <- mod.inla$summary.fixed[i,] %>% rownames()
     fixed <- mod.inla$summary.fixed[i,] %>% as.numeric()
 
-    d <- mod.inla$marginals.fixed[[i]] %>% as.data.frame()
+
+    if(exp == TRUE){ #take advantage of exponentiating quantiles
+      d <- inla.tmarginal(exp, mod.inla$marginals.fixed[[i]]) %>% as.data.frame()
+    } else{
+      d <- mod.inla$marginals.fixed[[i]] %>% as.data.frame()
+
+    }
 
     var_df <- data.frame(
       x = d$x,
@@ -41,10 +47,6 @@ coefINLA <- function(mod.inla=NULL,
   if(exclude[1] != FALSE){
     coef_df <- coef_df %>%
       filter(var %!in% exclude)
-  }
-
-  if(exp == TRUE){ #take advantage of exponentiating quantiles
-    coef_df[,c(1, 4:6)] <- exp(coef_df[,c(1, 4:6)])
   }
 
   if(is.null(labeller)){
