@@ -11,6 +11,6 @@ Depends:
     R (>= 3.2.1)
 Imports: 
     tidyverse,
-    RColorBrewer,
-    INLA
+    RColorBrewer
+Remotes: github::jsta/r-inla
 Encoding: UTF-8
