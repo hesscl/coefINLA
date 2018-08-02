@@ -11,6 +11,7 @@ Depends:
     R (>= 3.2.1)
 Imports: 
     ggplot2,
-	dplyr,
-	RColorBrewer
+    dplyr,
+    RColorBrewer,
+    INLA
 Encoding: UTF-8
