@@ -9,9 +9,8 @@ License: MIT
 URL: https://github.com/hesscl/coefINLA
 Depends: 
     R (>= 3.2.1)
-Remotes: 
-    jsta/r-inla
 Imports: 
     tidyverse,
     RColorBrewer
+    Remotes: jsta/r-inla
 Encoding: UTF-8
