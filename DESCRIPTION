@@ -12,5 +12,6 @@ Depends:
 Imports: 
     tidyverse,
     RColorBrewer,
-    Remotes: jsta/r-inla
+    INLA
+Remotes: jsta/r-INLA
 Encoding: UTF-8
