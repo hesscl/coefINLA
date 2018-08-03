@@ -1,1 +1,3 @@
 language: r 
+r_github_packages:
+- jsta/r-inla
