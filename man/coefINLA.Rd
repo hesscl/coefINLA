@@ -47,6 +47,7 @@ coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL, intercept=TRUE, 
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+library(INLA)
 data(iris)
 
 mod1 <- Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width

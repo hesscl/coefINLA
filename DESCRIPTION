@@ -10,6 +10,8 @@ URL: https://github.com/hesscl/coefINLA
 Depends: 
     R (>= 3.2.1)
 Imports: 
-    tidyverse,
-    RColorBrewer
+    ggplot2,
+	dplyr,
+    RColorBrewer,
+	INLA
 Encoding: UTF-8
