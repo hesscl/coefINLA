@@ -8,7 +8,8 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL, intercept=TRUE, exclude=FALSE)
+coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL, 
+		 intercept=TRUE, exclude=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -47,7 +48,6 @@ coefINLA(mod.inla, palette="Purples", exp=FALSE, labeller=NULL, intercept=TRUE, 
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-library(INLA)
 data(iris)
 
 mod1 <- Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width
@@ -59,7 +59,7 @@ coefINLA(fit1) +
   labs(title = "Posterior Distributions",
        subtitle = "with 95\% interval") +
   ggsave(filename = "./example.pdf", dpi = 300,
-                        width = 6, height = 8)
+         width = 6, height = 8)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

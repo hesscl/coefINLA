@@ -1,1 +1,6 @@
-exportPattern("^[[:alpha:]]+")
+export(coefINLA)
+import(ggplot2)
+import(dplyr)
+import(magrittr)
+import(INLA)
+import(RColorBrewer)

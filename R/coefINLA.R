@@ -1,13 +1,10 @@
 coefINLA <- function(mod.inla=NULL,
                      palette="Purples", exp=FALSE, labeller=NULL,
                      intercept=TRUE, exclude=FALSE){
-  library(ggplot2)
-  library(dplyr)
-  library(INLA)
-  library(RColorBrewer)
+
   '%!in%' <- function(x,y)!('%in%'(x,y))
 
-  pal <- brewer.pal(n = 7, name = palette)
+  pal <- RColorBrewer::brewer.pal(n = 7, name = palette)
 
   coef_df <- data.frame()
   for(i in 1:nrow(mod.inla$summary.fixed)){
@@ -21,7 +18,7 @@ coefINLA <- function(mod.inla=NULL,
 
 
     if(exp == TRUE){
-      d <- inla.tmarginal(exp, mod.inla$marginals.fixed[[i]]) %>% as.data.frame()
+      d <- INLA::inla.tmarginal(exp, mod.inla$marginals.fixed[[i]]) %>% as.data.frame()
       fixed <- exp(fixed)
     } else{
       d <- mod.inla$marginals.fixed[[i]] %>% as.data.frame()
@@ -41,39 +38,39 @@ coefINLA <- function(mod.inla=NULL,
 
   if(intercept == FALSE){
     coef_df <- coef_df %>%
-      filter(var != "(Intercept)")
+      dplyr::filter(var != "(Intercept)")
   }
 
   if(exclude[1] != FALSE){
     coef_df <- coef_df %>%
-      filter(var %!in% exclude)
+      dplyr::filter(var %!in% exclude)
   }
 
   if(is.null(labeller)){
     labeller <- labeller()
   }
 
-  gg <- ggplot(coef_df, aes(x = x, y = y, group = var)) +
-    facet_grid(var ~ . , scales = "free_y", labeller = labeller) +
-    geom_vline(xintercept = 0, color = "grey70") +
-    geom_line(stat = "identity", color = "grey20") +
-    geom_ribbon(data = subset(coef_df, x > lower & x < upper),
+  gg <- ggplot2::ggplot(coef_df, aes(x = x, y = y, group = var)) +
+    ggplot2::facet_grid(var ~ . , scales = "free_y", labeller = labeller) +
+    ggplot2::geom_vline(xintercept = 0, color = "grey70") +
+    ggplot2::geom_line(stat = "identity", color = "grey20") +
+    ggplot2::geom_ribbon(data = subset(coef_df, x > lower & x < upper),
                 aes(ymax = y, ymin = 0, x = x),
                 fill = pal[7], colour = NA, alpha = 0.5)  +
-    geom_segment(data = coef_df, aes(xend = med, x = med, yend = 0), color = pal[7], lwd = .75) +
-    scale_y_continuous(labels = NULL, minor_breaks = NULL) +
-    theme_minimal() +
-    theme(axis.title.y = element_blank(),
-          axis.text.y = element_blank(),
-          axis.ticks.y = element_blank(),
-          axis.line.x = element_line(color = "grey70"),
-          axis.ticks.x = element_line(color = "grey70"),
-          plot.background = element_blank(),
-          panel.grid = element_blank(),
-          panel.spacing = unit(0, "lines"),
-          strip.text.y = element_text(angle = 0)) +
-    xlab("") +
-    ylab("")
+    ggplot2::geom_segment(data = coef_df, aes(xend = med, x = med, yend = 0), color = pal[7], lwd = .75) +
+    ggplot2::scale_y_continuous(labels = NULL, minor_breaks = NULL) +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.title.y = element_blank(),
+                   axis.text.y = element_blank(),
+                   axis.ticks.y = element_blank(),
+                   axis.line.x = element_line(color = "grey70"),
+                   axis.ticks.x = element_line(color = "grey70"),
+                   plot.background = element_blank(),
+                   panel.grid = element_blank(),
+                   panel.spacing = unit(0, "lines"),
+                   strip.text.y = element_text(angle = 0)) +
+    ggplot2::xlab("") +
+    ggplot2::ylab("")
   return(gg)
 }
 
